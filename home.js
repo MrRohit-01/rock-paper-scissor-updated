@@ -97,10 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (text === 'Auto Play') {
       text = 'Stop Auto Play';
-      disableButton(true);
     } else {
       text = 'Auto Play';
-      disableButton(flase)
     }
 
     autoPlayElement.innerText = text;
