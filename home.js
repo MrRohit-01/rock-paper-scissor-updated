@@ -8,6 +8,21 @@
  }
 let result;
 resultBoard();
+let isAutoPlay = false;
+let intervalId;
+function autoPlay() {
+  if (!isAutoPlay) {
+    intervalId = setInterval(() => {
+      return playermove(compmove());
+    }, 700);
+    isAutoPlay = true;
+  }
+  else {
+    clearInterval(intervalId);
+    isAutoPlay = false;
+  }
+}
+
 function playermove(move) {
   let comp = compmove();
   if(move === 'rock'){
@@ -25,23 +40,10 @@ function playermove(move) {
     if(comp == 'rock'){
       result = 'you won'
     }
-    else if(comp === 'paper'){
-      result = 'Game is tie'
-    }
+    else if(comp === 'paper')
+    { result = 'Game is tie'}
     else{
-      result='you lost'
-    }
-  }
-  else{
-    if(comp == 'rock'){
-      result='you lost'
-    }
-    else if(comp == 'paper'){
-      result = 'you won'
-    }
-    else{
-      result = 'Game is tie'
-    }
+      result='you lost'}
   }
   if(result==='you won'){
     score.wins +=1;
@@ -60,12 +62,12 @@ function playermove(move) {
   resultBoard();
 }
 function compmove() {
-  let pcmove;
   const temppcmove = Math.random();
-  if( 0>= temppcmove && temppcmove<=1/3){
+  let pcmove;
+  if( 0<= temppcmove && temppcmove<=1/3){
     pcmove = "rock";
   }
-  if( 1/3 < temppcmove && temppcmove<= 2/3){
+  else if( 1/3 < temppcmove && temppcmove<= 2/3){
     pcmove = "paper";
   }
   else{
@@ -74,9 +76,9 @@ function compmove() {
   return pcmove;
 }
 function reset(){
-  score.wins= 0,
-  score.losses= 0,
-  score.ties= 0,
+  score.wins= 0;
+  score.losses= 0;
+  score.ties= 0;
   localStorage.removeItem('score');
   resultBoard();
 }
@@ -87,3 +89,20 @@ function reset(){
     Losses : ${score.losses},
     Ties : ${score.ties}`;
 }
+document.addEventListener('DOMContentLoaded', () => {
+  const autoPlayElement = document.querySelector('.autoPlay');
+
+  autoPlayElement.addEventListener('click', () => {
+    let text = autoPlayElement.innerText;
+
+    if (text === 'Auto Play') {
+      text = 'Stop Auto Play';
+      disableButton(true);
+    } else {
+      text = 'Auto Play';
+      disableButton(flase)
+    }
+
+    autoPlayElement.innerText = text;
+  });
+});

@@ -8,17 +8,20 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <h1>rock paper scissor</h1>
   <div class="content">
-  <button class="choice" onclick="playermove('rock')" ><img src="img/rock-emoji.png" alt="" class="emoji"></button>
-  <button class="choice" onclick="playermove('paper')" ><img src="img/paper-emoji.png" alt="" class="emoji"></button>
-  <button class="choice" onclick="playermove('scissor')" ><img src="img/scissor-emoji.png" alt="" class="emoji"></button>
+    <button class="choice btn" onclick="playermove('rock')" ><img src="img/rock-emoji.png" alt="" class="emoji"></button>
+    <button class="choice btn" onclick="playermove('paper')" ><img src="img/paper-emoji.png" alt="" class="emoji"></button>
+    <button class="choice btn" onclick="playermove('scissor')" ><img src="img/scissor-emoji.png" alt="" class="emoji"></button>
   </div>
   <div class="reset-container">
     <p class="js-result"></p>
     <p class="js-moves"></p>
     <p class="js-score"></p>
-  <button class="reset" onclick="reset()" >Reset score</button>
-  </div>
+    <div class="buttons">
+    <button class="reset" onclick="reset()" >Reset score</button>
+    <button class="autoPlay" onclick="autoPlay()" >Auto Play</button>
+  </div></div>
   <script src="home.js"></script>
 </body>
 </html>
